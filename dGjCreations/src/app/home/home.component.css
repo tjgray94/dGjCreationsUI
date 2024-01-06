@@ -1,0 +1,30 @@
+.card-container {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: nowrap; /* Prevent wrapping of items to the next row */
+    justify-content: space-between; /* Distribute items with space between them */
+}
+
+.card {
+    /* Customize card styles if needed */
+    width: 30%; /* Adjust the width of the cards to fit three on the row */
+}
+
+.header {
+    display: block;
+    text-align: center;
+}
+
+.image {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.content {
+    display: block;
+    text-align: center;
+}
+
+.top-component{
+    padding-top: 50px;
+}

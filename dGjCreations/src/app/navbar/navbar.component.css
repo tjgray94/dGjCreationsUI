@@ -1,0 +1,14 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.fixed {
+    position: fixed;
+    z-index: 100; /* Adjust the z-index to control stacking order */
+}
+
+.home-button {
+    font-size: 18px;
+    font-family: 'Rockwell';
+}
+  

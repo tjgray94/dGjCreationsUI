@@ -1,0 +1,7 @@
+<div mat-dialog-content>
+    <p>Are you sure you want to add this product?</p>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>No Thanks</button>
+    <button mat-button [mat-dialog-close]="true" (click)="increaseBadgeCount()">Yes</button>
+</div>
