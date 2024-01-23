@@ -1,0 +1,30 @@
+.top-component {
+    padding-top: 64px;
+}
+
+.product-container {
+    display: flex;
+}
+
+.product-image {
+    padding-left: 70px;
+}
+
+.product-info {
+    padding-right: 70px;
+}
+
+.addToCart {
+    background-color: red;
+    color: white;
+}
+
+.action-button {
+    margin-right: 5px;
+}
+
+.center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

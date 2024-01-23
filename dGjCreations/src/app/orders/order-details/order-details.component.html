@@ -1,0 +1,18 @@
+<div class="card top-component">
+    <div class="card-header">
+        <h4>Order Details</h4>
+    </div>
+    <div class="order-info">
+        <mat-card>
+            <mat-card-content>
+                <h5>{{ order.products }}</h5>
+                <h5>{{ order.name }}</h5>
+                <h5>{{ order.address }}</h5>
+                <h5>{{ order.total | currency }}</h5>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="card-footer">
+        <button mat-flat-button (click)='onBack()'>Back</button>
+    </div>
+</div>

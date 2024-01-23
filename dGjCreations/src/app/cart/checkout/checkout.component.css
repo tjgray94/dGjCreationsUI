@@ -2,20 +2,16 @@
     padding-top: 64px;
 }
 
-.cart-container {
+.checkout-container {
     display: flex;
 }
 
-.cart {
-    width: 100%;
-}
-
-.cart-details {
+.shipping-info {
     width: 70%;
     padding-left: 70px;
 }
 
-.cart-summary {
+.order-actions {
     width: 30%;
     padding-right: 70px;
 }
@@ -29,8 +25,4 @@
 .summary-container, .total {
     display: flex;
     justify-content: space-between;
-}
-
-.mat-column-quantity input {
-    width: 50px;
 }

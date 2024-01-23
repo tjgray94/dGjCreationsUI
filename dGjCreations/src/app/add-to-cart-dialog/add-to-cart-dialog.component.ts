@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BadgeService } from '../badge.service';
 
 @Component({
@@ -8,11 +9,15 @@ import { BadgeService } from '../badge.service';
 })
 export class AddToCartDialogComponent implements OnInit {
 
-  constructor(private badgeService: BadgeService) { }
+  constructor(private badgeService: BadgeService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  public checkout() {
+    this.router.navigate(['/cart'])
+  }
+  
   increaseBadgeCount() {
     this.badgeService.incrementBadgeCount();
   }

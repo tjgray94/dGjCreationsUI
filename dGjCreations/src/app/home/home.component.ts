@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BadgeService } from '../badge.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddToCartDialogComponent } from '../add-to-cart-dialog/add-to-cart-dialog.component';
 
@@ -10,7 +9,7 @@ import { AddToCartDialogComponent } from '../add-to-cart-dialog/add-to-cart-dial
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private badgeService: BadgeService, public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }

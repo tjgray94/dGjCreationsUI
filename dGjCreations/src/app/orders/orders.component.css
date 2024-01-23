@@ -1,3 +1,7 @@
 .top-component{
     padding-top: 64px;
 }
+
+.action-button {
+    margin-right: 5px;
+}

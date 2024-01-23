@@ -1,7 +1,7 @@
 <div mat-dialog-content>
-    <p>Are you sure you want to add this product?</p>
+    <p>Added to Cart!</p>
 </div>
 <div mat-dialog-actions>
-    <button mat-button mat-dialog-close>No Thanks</button>
-    <button mat-button [mat-dialog-close]="true" (click)="increaseBadgeCount()">Yes</button>
+    <button mat-button mat-dialog-close>Continue Shopping</button>
+    <button mat-button [mat-dialog-close]="true" (click)="checkout()">Checkout</button>
 </div>

@@ -1,38 +1,38 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Product } from './product';
+import { Order } from './order';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
-  private baseUrl = 'http://localhost:5002/api/products';
-  private products: Product[] = [];
+export class OrderService {
+  private baseUrl = 'http://localhost:5002/api/orders';
+  private orders: Order[] = [];
 
   constructor(private http: HttpClient) { }
 
-  public getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.baseUrl).pipe(
-      tap(data => this.products = data),
+  public getOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(this.baseUrl).pipe(
+      tap(data => this.orders = data),
       catchError(this.handleError)
     )
   }
 
-  public getProduct(id: any): Observable<any> {
+  public getOrder(id: any): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  public addProduct(data: any): Observable<any> {
+  public addOrder(data: any): Observable<any> {
     return this.http.post(this.baseUrl, data);
   }
 
-  public updateProduct(id: any, data: any): Observable<any> {
+  public updateOrder(id: any, data: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/${id}`, data);
   }
 
-  public deleteProduct(id: any): Observable<any> {
+  public deleteOrder(id: any): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
 

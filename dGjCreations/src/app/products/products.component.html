@@ -1,4 +1,4 @@
-<div class="top-component">
+<div class="top-component container">
     <h2>Products Available</h2>
     <ul>
         <li>Party/Bridal favors</li>
@@ -9,5 +9,24 @@
         <li>Grad Cap Designs</li>
         <li>Yard Signs</li>
         <li>Cups/Mugs/Wine Glasses</li>
+        <li *ngFor="let product of products">{{ product.name }}</li>
     </ul>
+    <table mat-table [dataSource]="products" class="mat-elevation-z8" style="width: 50%;">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-flat-button class="action-button" color="primary" *ngIf="element.productId" [routerLink]="[element.productId]">View</button>
+                <button mat-flat-button class="action-button" color="primary" *ngIf="element.productId" [routerLink]="[element.productId, 'edit']">Edit</button>
+                <button mat-flat-button color="primary" (click)="deleteProduct(element.productId)">Delete</button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table><hr>
+    <button mat-raised-button color="primary" (click)="addProductDialog()">Add Product</button>
 </div>
+
