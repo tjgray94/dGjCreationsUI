@@ -3,7 +3,6 @@ import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddProductComponent } from './add-product/add-product.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +13,7 @@ export class ProductsComponent implements OnInit {
   public products!: Product[];
   public displayedColumns: string[] = ['name', 'action'];
 
-  constructor(private productService: ProductService, private dialog: MatDialog, private router: Router) { }
+  constructor(private productService: ProductService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data) => {

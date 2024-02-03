@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Product } from './product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private cartItems: { name: string; price: number; quantity: number }[] = [];
+  private cartItems: { name: string; price: number; quantity: number; purchaseQuantity: number }[] = [];
   private totalAmountSource = new BehaviorSubject<number>(0);
   public totalAmount$ = this.totalAmountSource.asObservable();
 
   constructor() { }
 
-  public addToCart(name: string, price: number, quantity: number = 1): void {
-    this.cartItems.push({ name, price, quantity });
+  public addToCart(product: Product, purchaseQuantity: number = 1): void {
+    this.cartItems.push({
+      name: product.name,
+      price: product.price,
+      quantity: product.quantity,
+      purchaseQuantity: Math.min(purchaseQuantity, product.quantity)
+    });
   }
 
   public removeFromCart(index: number): void {
@@ -21,7 +27,7 @@ export class CartService {
     }
   }
 
-  public getCartItems(): { name: string; price: number; quantity: number }[] {
+  public getCartItems(): { name: string; price: number; quantity: number; purchaseQuantity: number }[] {
     return this.cartItems;
   }
 

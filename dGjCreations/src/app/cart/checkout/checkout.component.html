@@ -31,7 +31,7 @@
                 </mat-card-header><hr>
                 <mat-card-content>
                     <div class="summary-container" *ngFor="let product of selectedProducts">
-                        <p>{{ product.name }}({{product.quantity}})</p>
+                        <p>{{ product.name }}({{product.purchaseQuantity}})</p>
                     </div>
                     <div class="total">
                         <h5>Total</h5>
@@ -46,5 +46,6 @@
     </div>
     <div class="container" *ngIf="submitted">
         <h4>Order was placed successfully!</h4><hr>
+        <button mat-flat-button (click)="goHome()">Home</button>
     </div>
 </div>

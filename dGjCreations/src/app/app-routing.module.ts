@@ -12,7 +12,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailsComponent } from './orders/order-details/order-details.component';
 
 const routes: Routes = [
-  { path: 'home', component:HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'prices', component: PricesComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'products/:productId', component: ProductDetailsComponent },

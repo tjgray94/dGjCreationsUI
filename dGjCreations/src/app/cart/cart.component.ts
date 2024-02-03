@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { BadgeService } from '../badge.service';
+import { Product } from '../product';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +16,9 @@ export class CartComponent implements OnInit {
   public shippingTax = 10;
   public displayedColumns: string[] = ['name', 'quantity', 'price', 'action'];
 
-  constructor(private cartService: CartService, private badgeService: BadgeService, private router: Router) {
+  constructor(private cartService: CartService,
+              private badgeService: BadgeService,
+              private router: Router) {
     this.cartItems = this.cartService.getCartItems();
     this.calculateTotal();
   }
@@ -24,22 +27,29 @@ export class CartComponent implements OnInit {
   }
 
   public calculateTotal(): void {
-    this.itemTotal = this.cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    this.itemTotal = this.cartItems.reduce((sum, item) => sum + (item.price * item.purchaseQuantity), 0);
     this.totalAmount = this.itemTotal + this.shippingTax;
     this.cartService.setTotalAmount(this.totalAmount);
   }
 
   public removeItem(index: number): void {
     if (index >= 0 && index < this.cartItems.length) {
-      this.cartItems = this.cartItems.filter((item, i) => i !== index);
+      // this.cartItems = this.cartItems.filter((item, i) => i !== index);
+      this.cartService.removeFromCart(index);
       this.badgeService.decreaseBadgeCount();
-      this.calculateTotal();
+      // this.calculateTotal();
+      // Saves updated cart state to local storage
+      // localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
     }
   }
 
-  public updateQuantity(index: number): void {
+  public getQuantity(product: Product): number {
+    return product.quantity;
+  }
+
+  public updateQuantity(index: number, newQuantity: number): void {
     const item = this.cartItems[index];
-    item.quantity = Math.max(1, Math.floor(item.quantity));
+    item.purchaseQuantity = Math.max(1, Math.min(newQuantity, item.quantity));
     this.calculateTotal();
   }
 
