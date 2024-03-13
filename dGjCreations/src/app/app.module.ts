@@ -2,7 +2,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
@@ -31,6 +31,8 @@ import { EditProductComponent } from './products/edit-product/edit-product.compo
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { CheckoutComponent } from './cart/checkout/checkout.component';
 import { OrderDetailsComponent } from './orders/order-details/order-details.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { OrderDetailsComponent } from './orders/order-details/order-details.comp
     EditProductComponent,
     ProductDetailsComponent,
     CheckoutComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     AngularSvgIconModule,
@@ -65,7 +69,8 @@ import { OrderDetailsComponent } from './orders/order-details/order-details.comp
     MatInputModule,
     MatMenuModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

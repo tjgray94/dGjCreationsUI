@@ -6,6 +6,8 @@
         <mat-icon svgIcon="hamburger"></mat-icon>
     </button>
     <mat-menu #appMenu="matMenu">
+        <button mat-menu-item (click)="register()">Register</button>
+        <button mat-menu-item (click)="login()">Login</button>
         <button mat-menu-item (click)="redirectToProducts()">Products</button>
         <button mat-menu-item (click)="redirectToPrices()">Prices</button>
         <button mat-menu-item (click)="redirectToOrders()">Orders</button>
