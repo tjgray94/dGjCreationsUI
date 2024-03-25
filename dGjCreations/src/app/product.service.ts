@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Product } from './product';
-import { Observable, throwError } from 'rxjs';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -9,13 +9,14 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class ProductService {
   private baseUrl = 'http://localhost:5002/api/products';
-  private products: Product[] = [];
+  private products = new BehaviorSubject<Product[]>([]);
+  public products$ = this.products.asObservable();
 
   constructor(private http: HttpClient) { }
 
   public getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl).pipe(
-      tap(data => this.products = data),
+      tap(data => this.products.next(data)),
       catchError(this.handleError)
     )
   }
@@ -30,6 +31,10 @@ export class ProductService {
 
   public updateProduct(id: any, data: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/${id}`, data);
+  }
+
+  public updateProductQuantity(id: any, newQuantity: number): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/${id}/updateQuantity`, { quantity: newQuantity });
   }
 
   public deleteProduct(id: any): Observable<any> {

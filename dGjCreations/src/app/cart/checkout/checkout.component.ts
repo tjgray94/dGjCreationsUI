@@ -3,7 +3,9 @@ import { Order } from 'src/app/order';
 import { OrderService } from 'src/app/order.service';
 import { BadgeService } from 'src/app/badge.service';
 import { CartService } from 'src/app/cart.service';
+import { ProductService } from 'src/app/product.service';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/product';
 
 @Component({
   selector: 'app-checkout',
@@ -12,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class CheckoutComponent implements OnInit {
   public submitted = false;
+  public products!: Product[];
   public order: Order = {
     products: [],
     total: 0,
@@ -26,6 +29,7 @@ export class CheckoutComponent implements OnInit {
   constructor(private cartService: CartService,
               private orderService: OrderService,
               private badgeService: BadgeService,
+              private productService: ProductService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -33,6 +37,9 @@ export class CheckoutComponent implements OnInit {
     this.selectedProductNames = this.cartService.getCartItemNames();
     this.cartService.totalAmount$.subscribe(totalAmount => {
       this.totalAmount = totalAmount;
+    })
+    this.productService.getProducts().subscribe((data) => {
+      this.products = data;
     })
   }
 
@@ -51,13 +58,17 @@ export class CheckoutComponent implements OnInit {
       this.submitted = true;
       this.badgeService.resetBadgeCount();
     })
-  }
-
-  public updateProductQuantity(name: string, newQuantity: number): void {
-    const product = this.selectedProducts.find(product => product.name === name);
-    if (product) {
-      product.quantity = newQuantity;
-    }
+    this.selectedProducts.forEach(product => {
+      const updatedQuantity = product.quantity - product.purchaseQuantity;
+      console.log(`Updating quantity for ${product.name}: ${updatedQuantity}`);
+      const matchedProduct = this.products.find(p => p.name === product.name);
+      if (matchedProduct) {
+        const productId = matchedProduct.productId;
+        console.log(productId)
+        this.productService.updateProductQuantity(productId, updatedQuantity).subscribe();
+      }
+    })
+    this.cartService.clearCart();
   }
 
   public goHome(): void {
