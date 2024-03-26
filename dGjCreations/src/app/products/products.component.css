@@ -5,3 +5,14 @@
 .action-button {
     margin-right: 5px;
 }
+
+.product-cell {
+    position: relative;
+}
+
+.out-of-stock {
+    position: absolute;
+    bottom: 0em; /* Adjust the distance from the product name */
+    font-size: 0.8em; /* Adjust the font size */
+    color: grey; /* Optional: You can adjust the color */
+}

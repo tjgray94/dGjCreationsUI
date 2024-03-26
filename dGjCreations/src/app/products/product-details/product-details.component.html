@@ -11,12 +11,13 @@
                         {{ product.name }}
                         <br>
                         <label for="price"> Price: </label>
-                        {{ product.price }}
+                        {{ product.price | currency }}
                         <br>
                         <label for="quanity"> In Stock: </label>
                         {{ product.quantity }}
                     </td>
                 </tr>
+                <p style="color: red;" *ngIf="product.quantity === 0">This item is currently unavailable!</p>
             </tbody>
         </table>
     </div>
@@ -45,7 +46,11 @@
                 </mat-card-header><hr>
                 <mat-card-content><h5>{{ product.price | currency }}</h5></mat-card-content>
                 <mat-card-actions>
-                    <button mat-flat-button class="addToCart" (click)="addProductToCart(product)">ADD TO CART</button>
+                    <button mat-flat-button class="addToCart" 
+                            (click)="addProductToCart(product)" 
+                            [disabled]="product.quantity === 0">
+                        {{ product.quantity > 0 ? 'ADD TO CART' : 'OUT OF STOCK' }}
+                    </button>
                 </mat-card-actions>
             </mat-card>
         </div>
