@@ -20,6 +20,16 @@
                                 <input matInput name="address" [(ngModel)]="order.address" required>
                             </mat-form-field>
                         </div>
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Payment Type</mat-label>
+                                <mat-select name="paymentType" [(ngModel)]="order.paymentType" required>
+                                    <mat-option value="Zelle">Zelle</mat-option>
+                                    <mat-option value="Cashapp">CashApp</mat-option>
+                                    <mat-option value="Cash">Cash</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
                     </form>
                 </mat-card-content>
             </mat-card>
@@ -39,7 +49,7 @@
                     </div>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-flat-button class="checkout" (click)="placeOrder()" [disabled]="!order.name || !order.address">Confirm Order</button>
+                    <button mat-flat-button class="checkout" (click)="placeOrder()" [disabled]="!order.name || !order.address || !order.paymentType">Confirm Order</button>
                 </mat-card-actions>
             </mat-card>
         </div>

@@ -18,6 +18,7 @@ export class CheckoutComponent implements OnInit {
   public order: Order = {
     products: [],
     total: 0,
+    paymentType: '',
     name: '',
     address: '',
     orderTime: ''
@@ -50,6 +51,7 @@ export class CheckoutComponent implements OnInit {
     const orderData = {
       products: orderProducts,
       total: this.totalAmount,
+      paymentType: this.order.paymentType,
       name: this.order.name,
       address: this.order.address,
       orderTime: dateTime

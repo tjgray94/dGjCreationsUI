@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Order } from 'src/app/order';
 import { OrderService } from 'src/app/order.service';
-import { CartService } from 'src/app/cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -14,14 +13,14 @@ export class OrderDetailsComponent implements OnInit {
     products: [],
     name: '',
     address: '',
-    total: 0
+    total: 0,
+    paymentType: ''
   };
   public orderId: number = 0;
   public id!: number;
   @Input() order!: Order;
 
   constructor(private orderService: OrderService,
-              private cartService: CartService,
               private route: ActivatedRoute,
               private router: Router) { }
 
