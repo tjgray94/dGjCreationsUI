@@ -13,10 +13,8 @@ export class AddProductComponent implements OnInit {
   public product: Product = {
     name: '',
     price: 0,
-    quantity: 0,
-    image: ''
+    quantity: 0
   };
-  public selectedImage = null;
 
   constructor(private productService: ProductService, private dialogRef: MatDialogRef<AddProductComponent>) { }
 
@@ -24,29 +22,14 @@ export class AddProductComponent implements OnInit {
   }
   
   public saveProduct(): void {
-    // if (!this.selectedImage) {
-    //   return;
-    // }
-    const data = new FormData();
-    data.append('selectedImage', this.selectedImage);
-    data.append('name', this.product.name);
-    data.append('price', String(this.product.price));
-    data.append('quantity', String(this.product.quantity));
-    // const data = {
-    //   name: this.product.name,
-    //   price: this.product.price,
-    //   quantity: this.product.quantity,
-    //   image: this.selectedImage
-    // }
+    const data = {
+      name: this.product.name,
+      price: this.product.price,
+      quantity: this.product.quantity
+    }
     this.productService.addProduct(data).subscribe(response => {
       this.submitted = true;
     })
-  }
-
-  public onImageSelected(event: any): void {
-    if (event.target.files.length > 0) {
-      this.selectedImage = event.target.files[0];
-    }
   }
 
   public addAnotherProduct(): void {
@@ -54,8 +37,7 @@ export class AddProductComponent implements OnInit {
     this.product = {
       name: '',
       price: 0,
-      quantity: 0,
-      image: ''
+      quantity: 0
     }
   }
 
