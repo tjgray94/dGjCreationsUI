@@ -1,18 +1,17 @@
 <mat-toolbar class="fixed">
-    <span class="spacer">
-        <button mat-button class="home-button" (click)="redirectToHome()">dGjCreations</button>
-    </span>
-    <button mat-icon-button [matMenuTriggerFor]="appMenu">
-        <mat-icon svgIcon="hamburger"></mat-icon>
-    </button>
-    <mat-menu #appMenu="matMenu">
-        <button mat-menu-item (click)="register()">Register</button>
-        <button mat-menu-item (click)="login()">Login</button>
-        <button mat-menu-item (click)="redirectToProducts()">Products</button>
-        <button mat-menu-item (click)="redirectToPrices()">Prices</button>
-        <button mat-menu-item (click)="redirectToOrders()">Orders</button>
-    </mat-menu>
-    <button mat-icon-button (click)="redirectToCart()">
-        <mat-icon [matBadge]="badgeCount" svgIcon="cart"></mat-icon>
-    </button>
+  <span class="spacer">
+    <button mat-button class="home-button" (click)="redirectToHome()">dGjCreations</button>
+  </span>
+  <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <mat-icon svgIcon="hamburger"></mat-icon>
+  </button>
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item (click)="login()">Login</button>
+    <button mat-menu-item (click)="redirectToProducts()">Products</button>
+    <button mat-menu-item (click)="redirectToPrices()">Pricing</button>
+    <button mat-menu-item (click)="redirectToOrders()">Orders</button>
+  </mat-menu>
+  <button mat-icon-button (click)="redirectToCart()">
+    <mat-icon [matBadge]="badgeCount" svgIcon="cart"></mat-icon>
+  </button>
 </mat-toolbar>

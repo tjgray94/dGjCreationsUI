@@ -54,8 +54,12 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   public addProductToCart(product: Product): void {
-    this.badgeService.incrementBadgeCount();
-    this.cartService.addToCart(product);
+    const isNewItem = this.cartService.addToCart(product);
+
+    if (isNewItem) {
+      this.badgeService.incrementBadgeCount();
+    }
+    
     this.dialog.open(AddToCartDialogComponent);
   }
 

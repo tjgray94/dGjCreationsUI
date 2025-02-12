@@ -1,71 +1,72 @@
 <div class="top-component" style="background-color: red;">
-    <br><h2 style="text-align:center; font-family:'Rockwell' ">dGjCreations</h2><br>
-    <p style="text-align:center; background-color: black;">Design and customize products with dGjCreations
-        <button mat-button color="primary" (click)="openDialog()">CREATE ACCOUNT</button>
-    </p>
-    <div class="container card-container">
-        <mat-card class="card">
-            <mat-card-header class="header">
-                <mat-card-title>Personalized Bottles</mat-card-title>
-            </mat-card-header><hr>
-            <img width="150" height="150" src="assets/bottles.jpg" title="Personlized bottles" class="image">
-            <mat-card-content class="content">
-                <p>
-                    Order these customized bottles for private events such as birthday parties, baby showers, etc. 
-                </p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button (click)="openDialog()">ADD TO CART</button>
-            </mat-card-actions>
-        </mat-card>
-        <mat-card class="card">
-            <mat-card-header class="header">
-                <mat-card-title>Personalized Canvas</mat-card-title>
-            </mat-card-header><hr>
-            <img width="150" height="150" src="assets/canvas.jpeg" title="Personalized canvas" class="image">        
-            <mat-card-content class="content">
-                <p>
-                    Order these customized bottles for private events such as birthday parties, baby showers, etc. 
-                </p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button (click)="openDialog()">ADD TO CART</button>
-            </mat-card-actions>
-        </mat-card>
-        <mat-card class="card">
-            <mat-card-header class="header">
-                <mat-card-title>Personalized Stole</mat-card-title>
-            </mat-card-header><hr>
-            <img width="150" height="150" src="assets/stole.jpeg" title="Personlized stole" class="image">        
-            <mat-card-content class="content">
-                <p>
-                    Order these customized bottles for private events such as birthday parties, baby showers, etc. 
-                </p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button (click)="openDialog()">ADD TO CART</button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
-    <br><br><br><br><br>
-    <mat-card>
-        <mat-card-header class="header">
-            <mat-card-title>Contact Information</mat-card-title>
-        </mat-card-header><hr>
-        <mat-card-content class="content">
-            <p>Diane Greenwood</p>
-            <p>832-000-0000</p>
-            <p>dgjcreations@gmail.com</p>
-        </mat-card-content>
-        <mat-card-actions>
-            <h2 style="text-align:center; color:red">$20 DEPOSIT REQUIRED ~ NON-REFUNDABLE</h2>
-            <p>Purchases should be made via one of the following:</p>
-            <ul>
-                <li>CashApp to $dGjCreations</li>
-                <li>Zelle to 832-000-0000</li>
-                <li>Cash</li>
-            </ul>
-
-        </mat-card-actions>
+  <br><h2 style="text-align:center; font-family:'Rockwell' ">dGjCreations</h2>
+  <p style="text-align:center;">Design and customize products with dGjCreations!
+    <a href="/login">Login</a> or <a href="/register">Create Account</a>
+  </p>
+  <div class="container card-container">
+    <mat-card class="card">
+      <mat-card-header class="header">
+        <mat-card-title>Personalized Bottles</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="assets/bottles.jpg" title="Personlized bottles">
+      <mat-card-content>
+        <p>
+          Order these customized bottles for private events such as birthday parties, baby showers, etc. 
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="openDialog()">ADD TO CART</button>
+      </mat-card-actions>
     </mat-card>
+    <mat-card class="card">
+      <mat-card-header class="header">
+        <mat-card-title>Personalized Canvas</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="assets/canvas.jpeg" title="Personalized canvas">        
+      <mat-card-content>
+        <p>
+          Order these customized bottles for private events such as birthday parties, baby showers, etc. 
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="openDialog()">ADD TO CART</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card class="card">
+      <mat-card-header class="header">
+        <mat-card-title>Personalized Stole</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="assets/stole.jpeg" title="Personlized stole">        
+      <mat-card-content>
+        <p>
+          Order these customized bottles for private events such as birthday parties, baby showers, etc. 
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="openDialog()">ADD TO CART</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <br><br><br><br><br>
+
+  <!-- Contact Information -->
+  <mat-card>
+    <mat-card-header style="display: block; text-align: center;">
+      <mat-card-title>Contact Information</mat-card-title>
+    </mat-card-header><hr>
+    <mat-card-content style="text-align: center;">
+      <p>Diane Greenwood</p>
+      <p>832-000-0000</p>
+      <p>dgjcreations@gmail.com</p>
+      <h2 style="color:red">$20 DEPOSIT REQUIRED ~ NON-REFUNDABLE</h2>
+      <p>Purchases should be made via one of the following:</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <ul>
+        <li>CashApp to $dGjCreations</li>
+        <li>Zelle to 832-000-0000</li>
+        <li>Cash</li>
+      </ul>
+    </mat-card-actions>
+  </mat-card>
 </div>

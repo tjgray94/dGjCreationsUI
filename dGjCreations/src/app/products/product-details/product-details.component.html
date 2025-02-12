@@ -1,63 +1,54 @@
 <div class="card top-component">
-    <div class="card-header">
-        <h4>Product Details</h4>
+  <div class="card-body">
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <label for="name"> Name: </label>
+            {{ product.name }}
+            <br>
+            <label for="quanity"> In Stock: </label>
+            {{ product.quantity }}
+          </td>
+        </tr>
+        <p style="color: red;" *ngIf="product.quantity === 0">This item is currently unavailable!</p>
+      </tbody>
+    </table>
+  </div>
+  <div class="product-container">
+    <div class="product-image" style="width: 70%;">
+      <mat-card>
+        <mat-card-content>
+          <img src="assets/bottles.jpg" width="300" height="250" class="center-image"><hr>
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title><h5>About this item</h5></mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>
+                These bottles can be customized in any way for private events such as birthday parties, baby showers, etc. 
+              </p>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-card-content>
+      </mat-card>
     </div>
-    <div class="card-body">
-        <table>
-            <tbody>
-                <tr>
-                    <td>
-                        <label for="name"> Name: </label>
-                        {{ product.name }}
-                        <br>
-                        <label for="price"> Price: </label>
-                        {{ product.price | currency }}
-                        <br>
-                        <label for="quanity"> In Stock: </label>
-                        {{ product.quantity }}
-                    </td>
-                </tr>
-                <p style="color: red;" *ngIf="product.quantity === 0">This item is currently unavailable!</p>
-            </tbody>
-        </table>
+    <div class="product-info" style="width: 30%;">
+      <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{ product.price | currency }}</mat-card-title>
+        </mat-card-header><hr>
+        <mat-card-actions>
+          <button mat-flat-button class="addToCart" (click)="addProductToCart(product)" [disabled]="product.quantity === 0">
+            {{ product.quantity > 0 ? 'ADD TO CART' : 'OUT OF STOCK' }}
+          </button>
+        </mat-card-actions>
+      </mat-card>
     </div>
-    <div class="product-container">
-        <div class="product-image" style="width: 70%;">
-            <mat-card>
-                <mat-card-content>
-                    <img src="assets/bottles.jpg" width="300" height="250" class="center-image"><hr>
-                    <mat-accordion>
-                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title><h5>Description</h5></mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <p>
-                                These bottles can be customized in any way for private events such as birthday parties, baby showers, etc. 
-                            </p>
-                        </mat-expansion-panel>
-                    </mat-accordion>
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <div class="product-info" style="width: 30%;">
-            <mat-card>
-                <mat-card-header>
-                    <mat-card-title>{{ product.name }}</mat-card-title>
-                </mat-card-header><hr>
-                <mat-card-content><h5>{{ product.price | currency }}</h5></mat-card-content>
-                <mat-card-actions>
-                    <button mat-flat-button class="addToCart" 
-                            (click)="addProductToCart(product)" 
-                            [disabled]="product.quantity === 0">
-                        {{ product.quantity > 0 ? 'ADD TO CART' : 'OUT OF STOCK' }}
-                    </button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
-    </div>
-    <div class="card-footer">
-        <button mat-flat-button class="action-button" (click)="deleteProduct()">Delete</button>
-        <button mat-flat-button class="action-button" (click)="updateProduct()">Update</button>
-        <button mat-flat-button (click)='onBack()'>Back</button>
-    </div>
+  </div>
+  <div class="card-footer">
+    <button mat-flat-button class="action-button" (click)="deleteProduct()">Delete</button>
+    <button mat-flat-button class="action-button" (click)="updateProduct()">Update</button>
+    <button mat-flat-button (click)='onBack()'>Back</button>
+  </div>
 </div>

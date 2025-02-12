@@ -12,13 +12,21 @@ export class CartService {
 
   constructor() { }
 
-  public addToCart(product: Product, purchaseQuantity: number = 1): void {
-    this.cartItems.push({
-      name: product.name,
-      price: product.price,
-      quantity: product.quantity,
-      purchaseQuantity: Math.min(purchaseQuantity, product.quantity)
-    });
+  public addToCart(product: Product, purchaseQuantity: number = 1): boolean {
+    const existingProduct = this.cartItems.find(item => item.name === product.name);
+
+    if (existingProduct) {
+      existingProduct.purchaseQuantity = Math.min(existingProduct.purchaseQuantity + purchaseQuantity, product.quantity);
+      return false;
+    } else {
+      this.cartItems.push({
+        name: product.name,
+        price: product.price,
+        quantity: product.quantity,
+        purchaseQuantity: Math.min(purchaseQuantity, product.quantity)
+      });
+      return true;
+    }
   }
 
   public removeFromCart(index: number): void {

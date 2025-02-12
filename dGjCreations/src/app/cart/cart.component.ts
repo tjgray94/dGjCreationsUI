@@ -11,33 +11,31 @@ import { Router } from '@angular/router';
 })
 export class CartComponent implements OnInit {
   public cartItems = [];
-  public totalAmount: number = 0;
+  public totalAmount: number;
   public itemTotal: number;
-  public shippingTax = 10;
+  public shippingTax: number;
   public displayedColumns: string[] = ['name', 'quantity', 'price', 'action'];
 
-  constructor(private cartService: CartService,
-              private badgeService: BadgeService,
-              private router: Router) {
-    this.cartItems = this.cartService.getCartItems();
-    this.calculateTotal();
-  }
-
+  constructor(private cartService: CartService, private badgeService: BadgeService, private router: Router) {}
+  
   ngOnInit(): void {
+    this.cartItems = this.cartService.getCartItems();
+    this.calculateTotal();   
   }
 
   public calculateTotal(): void {
     this.itemTotal = this.cartItems.reduce((sum, item) => sum + (item.price * item.purchaseQuantity), 0);
+    this.shippingTax = this.itemTotal * 0.0625;
     this.totalAmount = this.itemTotal + this.shippingTax;
     this.cartService.setTotalAmount(this.totalAmount);
   }
 
   public removeItem(index: number): void {
     if (index >= 0 && index < this.cartItems.length) {
-      // this.cartItems = this.cartItems.filter((item, i) => i !== index);
+      this.cartItems = this.cartItems.filter((item, i) => i !== index);
       this.cartService.removeFromCart(index);
       this.badgeService.decreaseBadgeCount();
-      // this.calculateTotal();
+      this.calculateTotal();
       // Saves updated cart state to local storage
       // localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
     }

@@ -1,30 +1,34 @@
 .card-container {
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: nowrap; /* Prevent wrapping of items to the next row */
-    justify-content: space-between; /* Distribute items with space between them */
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Distribute items with space between them */
+  align-items: stretch;
 }
 
 .card {
-    /* Customize card styles if needed */
-    width: 30%; /* Adjust the width of the cards to fit three on the row */
+  width: 30%; /* Adjust the width of the cards to fit three on the row */
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
-    display: block;
-    text-align: center;
-}
-
-.image {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.content {
-    display: block;
-    text-align: center;
+  display: block;
+  text-align: center;
 }
 
 .top-component{
-    padding-top: 50px;
+  padding-top: 50px;
+}
+
+.mat-card-image {
+  height: 200px;
+  object-fit: cover; /* Ensures images fill the space while keeping a good aspect ratio */
+}
+
+.mat-card-content {
+  flex-grow: 1; /* Allows the content section to expand to fill the available space */
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: center;
 }

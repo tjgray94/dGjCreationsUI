@@ -1,19 +1,17 @@
-<div class="card top-component">
-    <div class="card-header">
-        <h4>Order Details</h4>
-    </div>
-    <div class="order-info">
-        <mat-card>
-            <mat-card-content>
-                <h5>{{ order.products }}</h5>
-                <h5>{{ order.name }}</h5>
-                <h5>{{ order.address }}</h5>
-                <h5>{{ order.total | currency }}</h5>
-                <h5>{{ order.paymentType }}</h5>
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <div class="card-footer">
-        <button mat-flat-button (click)='onBack()'>Back</button>
-    </div>
+<div style="padding-top: 64px;">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Order Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Items: {{ order.products }}</p>
+      <p>For: {{ order.name }}</p>
+      <p>Ship To: {{ order.address }}</p>
+      <p>Total: {{ order.total | currency }}</p>
+      <p>Payment Type: {{ order.paymentType }}</p>
+    </mat-card-content>   
+    <mat-card-actions>
+      <button mat-flat-button (click)='onBack()'>Back</button>
+    </mat-card-actions>
+  </mat-card>
 </div>

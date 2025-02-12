@@ -1,61 +1,61 @@
 <div class="top-component">
-    <h2 style="text-align: center;">Checkout</h2>
-    <div class="checkout-container" *ngIf="!submitted">
-        <div class="shipping-info">
-            <mat-card>
-                <mat-card-header>
-                    <mat-card-title>Shipping Information</mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                    <form>
-                        <div>
-                            <mat-form-field appearance="fill">
-                                <mat-label>Name</mat-label>
-                                <input matInput name="name" [(ngModel)]="order.name" required>
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <mat-form-field appearance="fill">
-                                <mat-label>Address</mat-label>
-                                <input matInput name="address" [(ngModel)]="order.address" required>
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <mat-form-field appearance="fill">
-                                <mat-label>Payment Type</mat-label>
-                                <mat-select name="paymentType" [(ngModel)]="order.paymentType" required>
-                                    <mat-option value="Zelle">Zelle</mat-option>
-                                    <mat-option value="Cashapp">CashApp</mat-option>
-                                    <mat-option value="Cash">Cash</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                    </form>
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <div class="order-actions">
-            <mat-card>
-                <mat-card-header>
-                    <mat-card-title>In Your Bag</mat-card-title>
-                </mat-card-header><hr>
-                <mat-card-content>
-                    <div class="summary-container" *ngFor="let product of selectedProducts">
-                        <p>{{ product.name }}({{product.purchaseQuantity}})</p>
-                    </div>
-                    <div class="total">
-                        <h5>Total</h5>
-                        <h5>{{ totalAmount | currency }}</h5>
-                    </div>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-flat-button class="checkout" (click)="placeOrder()" [disabled]="!order.name || !order.address || !order.paymentType">Confirm Order</button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
+  <h2 style="text-align: center;">Checkout</h2>
+  <div class="checkout-container" *ngIf="!submitted">
+    <div class="shipping-info">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Shipping Information</mat-card-title>
+        </mat-card-header><hr>
+        <mat-card-content>
+          <form>
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput name="name" [(ngModel)]="order.name" required>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>Address</mat-label>
+                <input matInput name="address" [(ngModel)]="order.address" required>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>Payment Type</mat-label>
+                <mat-select name="paymentType" [(ngModel)]="order.paymentType" required>
+                  <mat-option value="Zelle">Zelle</mat-option>
+                  <mat-option value="Cashapp">CashApp</mat-option>
+                  <mat-option value="Cash">Cash</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
     </div>
-    <div class="container" *ngIf="submitted">
-        <h4>Order was placed successfully!</h4><hr>
-        <button mat-flat-button (click)="goHome()">Home</button>
+    <div class="order-actions">
+      <mat-card>
+        <mat-card-header>
+            <mat-card-title>In Your Bag</mat-card-title>
+        </mat-card-header><hr>
+        <mat-card-content>
+          <div class="summary-container" *ngFor="let product of selectedProducts">
+            <p>{{ product.name }}({{product.purchaseQuantity}})</p>
+          </div>
+          <div class="total">
+            <h5>Total</h5>
+            <h5>{{ totalAmount | currency }}</h5>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button class="checkout" (click)="placeOrder()" [disabled]="!order.name || !order.address || !order.paymentType">Confirm Order</button>
+        </mat-card-actions>
+      </mat-card>
     </div>
+  </div>
+  <div class="container" *ngIf="submitted">
+    <h4>Order was placed successfully!</h4><hr>
+    <button mat-flat-button (click)="goHome()">Home</button>
+  </div>
 </div>
