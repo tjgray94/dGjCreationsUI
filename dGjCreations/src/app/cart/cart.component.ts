@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
   public cartItems = [];
   public totalAmount: number;
   public itemTotal: number;
-  public shippingTax: number;
+  public salesTax: number;
   public displayedColumns: string[] = ['name', 'quantity', 'price', 'action'];
 
   constructor(private cartService: CartService, private badgeService: BadgeService, private router: Router) {}
@@ -25,8 +25,8 @@ export class CartComponent implements OnInit {
 
   public calculateTotal(): void {
     this.itemTotal = this.cartItems.reduce((sum, item) => sum + (item.price * item.purchaseQuantity), 0);
-    this.shippingTax = this.itemTotal * 0.0625;
-    this.totalAmount = this.itemTotal + this.shippingTax;
+    this.salesTax = this.itemTotal * 0.0825;
+    this.totalAmount = this.itemTotal + this.salesTax;
     this.cartService.setTotalAmount(this.totalAmount);
   }
 
